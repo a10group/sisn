@@ -12,7 +12,7 @@ import Logo from "@/components/logo";
 export default function SiteFooter() {
   return (
     <footer className="w-full border-t bg-muted/40">
-      <div className="container px-4 py-16 md:px-6">
+      <div className="container px-4 py-16 md:px-6 mx-auto">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
@@ -43,7 +43,7 @@ export default function SiteFooter() {
               Get in touch
             </h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>support@[yourdomain].com</p>
+              <p>support@sisn.com</p>
               <p>+232 XXX XXX XXX</p>
               <p>Freetown, Sierra Leone</p>
             </div>
@@ -79,7 +79,7 @@ export default function SiteFooter() {
                 <Link href="/about" className="hover:text-foreground">
                   About
                 </Link>
-                <Link href="/contact" className="hover:text-foreground">
+                <Link href="/contact-us" className="hover:text-foreground">
                   Contact
                 </Link>
                 <Link href="/careers" className="hover:text-foreground">
@@ -98,7 +98,11 @@ export default function SiteFooter() {
               Get product updates and school management insights.
             </p>
             <form className="flex gap-2">
-              <Input placeholder="Email address" type="email" />
+              <Input
+                placeholder="Email address"
+                type="email"
+                className="rounded-r-none"
+              />
               <Button type="submit">Subscribe</Button>
             </form>
           </div>
@@ -107,8 +111,9 @@ export default function SiteFooter() {
 
       {/* Bottom bar */}
       <div className="border-t">
-        <div className="container flex h-16 items-center justify-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} [Your Product Name]. All rights reserved.
+        <div className="container mx-auto flex h-16 items-center justify-center text-sm text-muted-foreground">
+          &copy; {new Date().getFullYear()} [Your Product Name]. All rights
+          reserved.
         </div>
       </div>
     </footer>

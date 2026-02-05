@@ -113,7 +113,7 @@ export function FeaturesSection() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <Button size="lg" className="px-8 py-6 text-base">
+          <Button size="lg" className="px-8 py-6 text-base rounded">
             View Full Features
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
