@@ -1,19 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles } from "lucide-react";
+import SmallTitle from "@/components/frontend/small-title";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background px-4">
       <div className="max-w-3xl mx-auto text-center">
         {/* Badge */}
-        <Badge
-          variant="secondary"
-          className="px-4 py-2 font-light text-sm mb-8 text-muted-foreground"
-        >
-          <Sparkles data-icon="inline-start" className="h-4 w-4 text-accent" />
-          Welcome to SISN
-        </Badge>
+        <SmallTitle title="Welcome to SISN" />
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 text-balance">
@@ -29,12 +24,16 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" className="px-8 py-6 text-base">
-            Start free
+          <Button size="lg" className="rounded-full px-8 py-6 text-base">
+            Get Started
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="lg" className="px-8 py-6 text-base">
-            Explore features
+          <Button
+            variant="ghost"
+            size="lg"
+            className="rounded-full px-8 py-6 text-base"
+          >
+            Explore Features
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
