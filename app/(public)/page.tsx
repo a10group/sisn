@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
+import { HeroSection } from "@/components/frontend/hero-section";
 
 const Page = () => {
   return (
-      <div>
-        <h2>Home Page</h2>
-      </div>
-  )
-}
-export default Page
+    <main className="max-w-6xl mx-auto">
+      <HeroSection />
+    </main>
+  );
+};
+export default Page;
