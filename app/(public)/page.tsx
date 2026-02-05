@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/frontend/hero-section";
 import LogoCloud from "@/components/frontend/logoCloud";
 import { DashboardPreview } from "@/components/frontend/dashboard-preview";
 import { FeaturesSection } from "@/components/frontend/features-section";
+import SiteFooter from "@/components/frontend/site-footer";
 
 const Page = () => {
   return (
@@ -11,6 +12,7 @@ const Page = () => {
       <LogoCloud />
       <DashboardPreview />
       <FeaturesSection />
+      <SiteFooter />
     </main>
   );
 };
