@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background px-4">
+    <section className="relative min-h-[80vh] flex items-center justify-center bg-background px-4">
       <div className="max-w-3xl mx-auto text-center">
         {/* Badge */}
         <Badge
