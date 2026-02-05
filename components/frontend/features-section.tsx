@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
+import SmallTitle from "@/components/frontend/small-title";
 
 const features = [
   {
@@ -65,6 +66,7 @@ export function FeaturesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
+          <SmallTitle title="Top Features" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             All-in-One School Management Modules
           </h2>
