@@ -1,15 +1,19 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background px-4">
+    <section className="min-h-[80px] flex items-center justify-center bg-background px-4">
       <div className="max-w-3xl mx-auto text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground mb-8">
-          <Sparkles className="h-4 w-4 text-accent" />
-          <span>Welcome to SISN</span>
-        </div>
+        <Badge
+          variant="secondary"
+          className="px-4 py-2 font-light text-sm mb-8 text-muted-foreground"
+        >
+          <Sparkles data-icon="inline-start" className="h-4 w-4 text-accent" />
+          Welcome to SISN
+        </Badge>
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 text-balance">
