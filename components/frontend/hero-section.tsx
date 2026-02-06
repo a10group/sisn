@@ -5,7 +5,7 @@ import { StarIcon } from "@/icons/title";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-muted-foreground px-4">
+    <section className="relative min-h-screen flex items-center justify-center px-4">
       <div className="max-w-3xl mx-auto text-center bg-muted-foreground">
         {/* Badge */}
         <SmallTitle

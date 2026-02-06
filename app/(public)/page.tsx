@@ -11,8 +11,8 @@ const Page = () => {
       <HeroSection />
       <LogoCloud />
       <DashboardPreview />
-      <Pricing />
       <FeaturesSection />
+      <Pricing />
     </main>
   );
 };
