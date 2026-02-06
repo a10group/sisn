@@ -4,6 +4,7 @@ import LogoCloud from "@/components/frontend/logoCloud";
 import { DashboardPreview } from "@/components/frontend/dashboard-preview";
 import { FeaturesSection } from "@/components/frontend/features-section";
 import Pricing from "@/components/frontend/pricing";
+import { TabbedFeatures } from "@/components/frontend/tabbed-features";
 
 const Page = () => {
   return (
@@ -12,6 +13,7 @@ const Page = () => {
       <LogoCloud />
       <DashboardPreview />
       <FeaturesSection />
+      <TabbedFeatures />
       <Pricing />
     </main>
   );

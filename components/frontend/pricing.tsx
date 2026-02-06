@@ -7,7 +7,6 @@ import { FaCheck } from "react-icons/fa6";
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true);
 
-  // SISN Standard Pricing
   const monthlyPrice = 40;
   const annualPrice = 400;
   const annualSavings = monthlyPrice * 12 - annualPrice;
@@ -37,7 +36,6 @@ export default function Pricing() {
 
         {/* Billing Toggle */}
         <div className="mx-auto mt-8 flex items-center justify-center gap-4">
-          <span className="text-sm font-medium text-gray-600">Billing:</span>
           <Button
             variant={!isAnnual ? "default" : "outline"}
             onClick={() => setIsAnnual(false)}
