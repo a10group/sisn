@@ -10,6 +10,7 @@ import {
   Check,
 } from "lucide-react";
 import SmallTitle from "@/components/frontend/small-title";
+import { InstagramIcon } from "@/icons/socials";
 
 const features = [
   {
@@ -62,11 +63,11 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 px-4 bg-secondary/30">
+    <section className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <SmallTitle title="Top Features" />
+          <SmallTitle title="Top Features" icon={<InstagramIcon />} />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             All-in-One School Management Modules
           </h2>
@@ -85,7 +86,7 @@ export function FeaturesSection() {
             >
               <CardHeader className="pb-4">
                 <div className="h-12 w-12 rounded-lg bg-primary text-white flex items-center justify-center mb-4">
-                  <feature.icon className="h-6 w-6 text-accent-foreground" />
+                  <feature.icon className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-foreground">
                   {feature.title}
@@ -113,7 +114,7 @@ export function FeaturesSection() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <Button size="lg" className="px-8 py-6 text-base rounded">
+          <Button size="lg" className="px-8 py-6 text-base rounded-full">
             View Full Features
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

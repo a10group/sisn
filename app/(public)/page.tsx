@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/frontend/hero-section";
 import LogoCloud from "@/components/frontend/logoCloud";
 import { DashboardPreview } from "@/components/frontend/dashboard-preview";
 import { FeaturesSection } from "@/components/frontend/features-section";
-import SiteFooter from "@/components/frontend/site-footer";
+import Pricing from "@/components/frontend/pricing";
 
 const Page = () => {
   return (
@@ -11,8 +11,8 @@ const Page = () => {
       <HeroSection />
       <LogoCloud />
       <DashboardPreview />
+      <Pricing />
       <FeaturesSection />
-      <SiteFooter />
     </main>
   );
 };

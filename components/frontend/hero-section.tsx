@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import SmallTitle from "@/components/frontend/small-title";
+import { StarIcon } from "@/icons/title";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-background px-4">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="relative min-h-screen flex items-center justify-center bg-muted-foreground px-4">
+      <div className="max-w-3xl mx-auto text-center bg-muted-foreground">
         {/* Badge */}
-        <SmallTitle title="Welcome to SISN" />
+        <SmallTitle
+          title="Welcome to SISN"
+          icon={<StarIcon className="h-4 w-4 text-yellow-400" />}
+        />
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 text-balance">

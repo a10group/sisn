@@ -11,13 +11,13 @@ import Logo from "@/components/logo";
 
 export default function SiteFooter() {
   return (
-    <footer className="w-full border-t bg-muted/40">
+    <footer className="w-full border-t bg-primary">
       <div className="container px-4 py-16 md:px-6 mx-auto">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
-            <Logo />
-            <p className="text-sm text-muted-foreground">
+            <Logo variant="dark" />
+            <p className="text-sm text-white">
               A complete school management platform designed to simplify
               administration, improve communication, and support academic
               excellence.
@@ -28,7 +28,7 @@ export default function SiteFooter() {
                   <Link
                     key={i}
                     href="#"
-                    className="rounded-md border p-2 text-muted-foreground hover:text-primary"
+                    className="rounded-md border p-2 text-white"
                   >
                     <Icon className="h-4 w-4" />
                   </Link>
@@ -39,12 +39,12 @@ export default function SiteFooter() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wide">
+            <h3 className="text-lg text-white font-semibold uppercase tracking-wide">
               Get in touch
             </h3>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-sm text-white">
               <p>support@sisn.com</p>
-              <p>+232 XXX XXX XXX</p>
+              <p>+232 XX XXX XXX</p>
               <p>Freetown, Sierra Leone</p>
             </div>
           </div>
@@ -52,58 +52,49 @@ export default function SiteFooter() {
           {/* Links */}
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-wide">
+              <h3 className="text-lg text-white font-semibold uppercase tracking-wide">
                 Product
               </h3>
-              <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <Link href="/" className="hover:text-foreground">
-                  Home
-                </Link>
-                <Link href="/features" className="hover:text-foreground">
-                  Features
-                </Link>
-                <Link href="/pricing" className="hover:text-foreground">
-                  Pricing
-                </Link>
-                <Link href="/how-it-works" className="hover:text-foreground">
-                  How it works
-                </Link>
+              <nav className="flex flex-col gap-2 text-sm text-white">
+                <Link href="/">Home</Link>
+                <Link href="/features">Features</Link>
+                <Link href="/pricing">Pricing</Link>
+                <Link href="/how-it-works">How it works</Link>
               </nav>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-wide">
+              <h3 className="text-lg text-white font-semibold uppercase tracking-wide">
                 Company
               </h3>
-              <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <Link href="/about" className="hover:text-foreground">
-                  About
-                </Link>
-                <Link href="/contact-us" className="hover:text-foreground">
-                  Contact
-                </Link>
-                <Link href="/careers" className="hover:text-foreground">
-                  Careers
-                </Link>
+              <nav className="flex flex-col gap-2 text-sm text-white">
+                <Link href="/about">About</Link>
+                <Link href="/contact-us">Contact</Link>
+                <Link href="/careers">Careers</Link>
               </nav>
             </div>
           </div>
 
           {/* Newsletter */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wide">
+            <h3 className="text-lg text-white font-semibold uppercase tracking-wide">
               Newsletter
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-white">
               Get product updates and school management insights.
             </p>
-            <form className="flex gap-2">
+            <form className="flex text-white placeholder:text-white">
               <Input
                 placeholder="Email address"
                 type="email"
-                className="rounded-r-none"
+                className="rounded-r-none flex-1 placeholder:text-white selection:bg-primary"
               />
-              <Button type="submit">Subscribe</Button>
+              <Button
+                type="submit"
+                className="rounded-l-none bg-white text-primary"
+              >
+                Subscribe
+              </Button>
             </form>
           </div>
         </div>
@@ -111,9 +102,8 @@ export default function SiteFooter() {
 
       {/* Bottom bar */}
       <div className="border-t">
-        <div className="container mx-auto flex h-16 items-center justify-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} [Your Product Name]. All rights
-          reserved.
+        <div className="container mx-auto flex h-16 items-center justify-center text-sm text-white">
+          &copy; {new Date().getFullYear()} SISN. All rights reserved.
         </div>
       </div>
     </footer>

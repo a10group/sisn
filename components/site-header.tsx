@@ -130,7 +130,7 @@ export default function SiteHeader() {
 
   return (
     <div className="h-fit">
-      <header className="sticky max-full top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="fixed w-full top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container max-w-6xl mx-auto flex h-14 items-center justify-between px-3">
           <div className="flex items-center space-x-4">
             <Logo />
