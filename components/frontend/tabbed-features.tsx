@@ -16,6 +16,8 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { StarIcon } from "@/icons/title";
+import SmallTitle from "@/components/frontend/small-title";
 
 const features = [
   {
@@ -307,6 +309,10 @@ export function TabbedFeatures() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
+          <SmallTitle
+            title="Additional Features"
+            icon={<StarIcon className="h-4 w-4 text-yellow-400" />}
+          />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             Everything You Need to Run Your School
           </h2>
