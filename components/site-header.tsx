@@ -301,14 +301,15 @@ export default function SiteHeader() {
               <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
                 <div className="grid gap-2">
                   <Button
+                    asChild
                     variant="outline"
                     className="w-full"
                     onClick={() => setOpen(false)}
                   >
-                    Log in
+                    <Link href="/login">Log In</Link>
                   </Button>
                   <Button className="w-full" onClick={() => setOpen(false)}>
-                    Sign up
+                    <Link href="/contact-us">Book a demo</Link>
                   </Button>
                 </div>
               </div>
