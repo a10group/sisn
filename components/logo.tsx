@@ -10,10 +10,10 @@ const Logo = ({ variant = "light" }: LogoVariantProps) => {
         <Link href={"/"} className="flex items-center space-x-2">
           <div className="bg-blue-500 rounded-full p-1">
             <span className="text-white font-bold text-xl">
-              <GraduationCap />
+              <GraduationCap className="h-8 w-8" />
             </span>
           </div>
-          <span className="font-bold text-xl text-blue-500">SISN</span>
+          <span className="font-bold text-3xl text-blue-500">SISN</span>
         </Link>
       </div>
     );
