@@ -8,7 +8,6 @@ import {
   LogOut,
   Plus,
   Sparkles,
-  Sun,
 } from "lucide-react";
 import {
   SidebarFooter,
@@ -20,7 +19,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Input } from "@/components/ui/input";
 import React from "react";
-import { NavUser } from "@/components/dashboard/sidebar/nav-user";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -70,12 +68,7 @@ const SidebarHeader = () => {
                     <AvatarImage src={data.user.avatar} alt={data.user.name} />
                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                   </Avatar>
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">
-                      {data.user.name}
-                    </span>
-                    <span className="truncate text-xs">{data.user.email}</span>
-                  </div>
+
                   <ChevronsUpDown className="ml-auto size-4" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>

@@ -2,21 +2,20 @@
 
 import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
+  LayoutDashboard,
+  Users,
+  GraduationCap,
+  UserCog,
+  MessageSquare,
+  DollarSign,
+  Bus,
+  Package,
+  BarChart3,
   Settings2,
-  SquareTerminal,
 } from "lucide-react";
 
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
-import { TeamSwitcher } from "./team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -27,146 +26,259 @@ import {
 import Logo from "@/components/logo";
 
 // This is sample data.
-const data = {
-  user: {
+const data = {};
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const user = {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
+  };
+
+  const sidebarLinks = [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: "Overview",
+          url: "/dashboard/overview",
         },
       ],
     },
+
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
+      title: "Student Management",
+      url: "/students",
+      icon: Users,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Student Directory",
+          url: "/students/directory",
         },
         {
-          title: "Explorer",
-          url: "#",
+          title: "Enrollment",
+          url: "/students/enrollment",
         },
         {
-          title: "Quantum",
-          url: "#",
+          title: "Attendance",
+          url: "/students/attendance",
+        },
+        {
+          title: "Performance",
+          url: "/students/performance",
         },
       ],
     },
+
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
+      title: "Academics",
+      url: "/academics",
+      icon: GraduationCap,
       items: [
         {
-          title: "Introduction",
-          url: "#",
+          title: "Curriculum",
+          url: "/academics/curriculum",
         },
         {
-          title: "Get Started",
-          url: "#",
+          title: "Timetable",
+          url: "/academics/timetable",
         },
         {
-          title: "Tutorials",
-          url: "#",
+          title: "Examinations",
+          url: "/academics/examinations",
         },
         {
-          title: "Changelog",
-          url: "#",
+          title: "Assignments",
+          url: "/academics/assignments",
+        },
+        {
+          title: "Report Cards",
+          url: "/academics/report-cards",
         },
       ],
     },
+
+    {
+      title: "Staff Management",
+      url: "/staff",
+      icon: UserCog,
+      items: [
+        {
+          title: "Staff Directory",
+          url: "/staff/directory",
+        },
+        {
+          title: "Attendance",
+          url: "/staff/attendance",
+        },
+        {
+          title: "Leave Management",
+          url: "/staff/leave",
+        },
+        {
+          title: "Performance",
+          url: "/staff/performance",
+        },
+      ],
+    },
+
+    {
+      title: "Communication",
+      url: "/communication",
+      icon: MessageSquare,
+      items: [
+        {
+          title: "Messages",
+          url: "/communication/messages",
+        },
+        {
+          title: "Announcements",
+          url: "/communication/announcements",
+        },
+        {
+          title: "Notice Board",
+          url: "/communication/notice-board",
+        },
+        {
+          title: "Emergency Alerts",
+          url: "/communication/emergency-alerts",
+        },
+      ],
+    },
+
+    {
+      title: "Finance",
+      url: "/finance",
+      icon: DollarSign,
+      items: [
+        {
+          title: "Fee Management",
+          url: "/finance/fees",
+        },
+        {
+          title: "Payments",
+          url: "/finance/payments",
+        },
+        {
+          title: "Scholarships",
+          url: "/finance/scholarships",
+        },
+        {
+          title: "Reports",
+          url: "/finance/reports",
+        },
+      ],
+    },
+
+    {
+      title: "Transport",
+      url: "/transport",
+      icon: Bus,
+      items: [
+        {
+          title: "Routes",
+          url: "/transport/routes",
+        },
+        {
+          title: "Tracking",
+          url: "/transport/tracking",
+        },
+        {
+          title: "Drivers",
+          url: "/transport/drivers",
+        },
+        {
+          title: "Maintenance",
+          url: "/transport/maintenance",
+        },
+      ],
+    },
+
+    {
+      title: "Resources",
+      url: "/resources",
+      icon: Package,
+      items: [
+        {
+          title: "Library",
+          url: "/resources/library",
+        },
+        {
+          title: "Inventory",
+          url: "/resources/inventory",
+        },
+        {
+          title: "Facilities",
+          url: "/resources/facilities",
+        },
+        {
+          title: "Assets",
+          url: "/resources/assets",
+        },
+      ],
+    },
+
+    {
+      title: "Reports & Analytics",
+      url: "/reports",
+      icon: BarChart3,
+      items: [
+        {
+          title: "Academic Reports",
+          url: "/reports/academic",
+        },
+        {
+          title: "Financial Reports",
+          url: "/reports/financial",
+        },
+        {
+          title: "Custom Reports",
+          url: "/reports/custom",
+        },
+        {
+          title: "Analytics Dashboard",
+          url: "/reports/analytics",
+        },
+      ],
+    },
+
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: Settings2,
       items: [
         {
-          title: "General",
-          url: "#",
+          title: "School Profile",
+          url: "/settings/school-profile",
         },
         {
-          title: "Team",
-          url: "#",
+          title: "User Management",
+          url: "/settings/users",
         },
         {
-          title: "Billing",
-          url: "#",
+          title: "System Settings",
+          url: "/settings/system",
         },
         {
-          title: "Limits",
-          url: "#",
+          title: "Backup & Security",
+          url: "/settings/security",
         },
       ],
     },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-};
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  ];
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <Logo />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={sidebarLinks} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

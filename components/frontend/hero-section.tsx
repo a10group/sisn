@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import SmallTitle from "@/components/frontend/small-title";
 import { StarIcon } from "@/icons/title";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -27,9 +28,15 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" className="rounded-full px-8 py-6 text-base">
-            Get Started
-            <ArrowRight className="ml-2 h-4 w-4" />
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full px-8 py-6 text-base"
+          >
+            <Link href="/contact-us">
+              Get Started
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
           <Button
             variant="ghost"
