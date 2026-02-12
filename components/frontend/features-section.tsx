@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import SmallTitle from "@/components/frontend/small-title";
 import { FeatureIcon } from "@/icons/title";
+import SectionHeader from "@/components/frontend/section-header";
 
 const features = [
   {
@@ -66,19 +67,13 @@ export function FeaturesSection() {
     <section className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <SmallTitle
-            title="Top Features"
-            icon={<FeatureIcon className="h-4 w-4 text-amber-400" />}
-          />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            All-in-One School Management Modules
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Streamline every aspect of school administration with our
-            comprehensive platform.
-          </p>
-        </div>
+        <SectionHeader
+          title="Top Features"
+          icon={FeatureIcon}
+          heading="All-in-One School Management Modules"
+          description="Streamline every aspect of school administration with our
+            comprehensive platform."
+        />
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

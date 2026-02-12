@@ -18,6 +18,7 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { StarIcon } from "@/icons/title";
 import SmallTitle from "@/components/frontend/small-title";
+import SectionHeader from "@/components/frontend/section-header";
 
 const features = [
   {
@@ -305,22 +306,16 @@ const previewComponents: Record<string, React.ReactNode> = {
 
 export function TabbedFeatures() {
   return (
-    <section className="py-16 sm:py-24 px-4 bg-secondary/30">
+    <section className="py-16 sm:py-24 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-14">
-          <SmallTitle
-            title="Additional Features"
-            icon={<StarIcon className="h-4 w-4 text-yellow-400" />}
-          />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Everything You Need to Run Your School
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            From student records to financial reporting, SISN covers every
-            aspect of school management.
-          </p>
-        </div>
+        <SectionHeader
+          title="Additional Features"
+          icon={StarIcon}
+          heading="Everything You Need to Run Your School"
+          description="From student records to financial reporting, SISN covers every
+            aspect of school management."
+        />
 
         {/* Tabbed Features */}
         <Tabs defaultValue="Students" className="w-full">

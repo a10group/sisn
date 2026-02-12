@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { GraduationCap } from "lucide-react";
 import { LogoVariantProps } from "@/types";
+import { cn } from "@/lib/utils";
 
-const Logo = ({ variant = "light" }: LogoVariantProps) => {
+const Logo = ({ variant = "light", size = "md" }: LogoVariantProps) => {
   if (variant === "light") {
     return (
       <div>
@@ -13,7 +14,14 @@ const Logo = ({ variant = "light" }: LogoVariantProps) => {
               <GraduationCap className="h-8 w-8" />
             </span>
           </div>
-          <span className="font-bold text-3xl text-blue-500">SISN</span>
+          <span
+            className={cn(
+              "font-bold text-3xl text-blue-500",
+              size === "lg" && "text-5xl",
+            )}
+          >
+            SISN
+          </span>
         </Link>
       </div>
     );
@@ -23,10 +31,13 @@ const Logo = ({ variant = "light" }: LogoVariantProps) => {
         <Link href={"/"} className="flex items-center space-x-2">
           <div className="bg-white rounded-full p-1">
             <span className="text-primary font-bold text-xl">
-              <GraduationCap />
+              <GraduationCap
+                className={cn("h-8 w-8", size === "lg" && "h-10 w-10")}
+              />
             </span>
           </div>
-          <span className="font-bold text-xl text-white">SISN</span>
+          className=
+          {cn("font-bold text-3xl text-white", size === "lg" && "text-5xl")}
         </Link>
       </div>
     );

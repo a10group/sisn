@@ -2,24 +2,20 @@ import React from "react";
 import ContactUs from "@/components/frontend/contact-us";
 import SmallTitle from "@/components/frontend/small-title";
 import { FeatureIcon } from "@/icons/title";
+import SectionHeader from "@/components/frontend/section-header";
+import Logo from "@/components/logo";
 
 const Page = () => {
   return (
-    <div className="py-16">
-      <div className="py-6">
-        <div className="text-center mb-16">
-          <SmallTitle
-            title="Top Features"
-            icon={<FeatureIcon className="h-4 w-4 text-amber-400" />}
-          />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            All-in-One School Management Modules
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Streamline every aspect of school administration with our
-            comprehensive platform.
-          </p>
+    <div className="py-10">
+      <div className="py-4">
+        <div className="flex items-center justify-center pb-8">
+          <Logo size="lg" />
         </div>
+        <SectionHeader
+          heading="Transform Your School Operations with SISN"
+          description="Modernize your academic, administrative, and financial workflows with an integrated school management platform designed for efficiency and transparency."
+        />
       </div>
 
       <ContactUs />

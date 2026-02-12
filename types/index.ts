@@ -1,4 +1,5 @@
 import { Option, Options } from "react-tailwindcss-select/dist/components/type";
+import { ComponentType } from "react";
 
 export type SmallTitleProps = {
   title: string;
@@ -7,6 +8,7 @@ export type SmallTitleProps = {
 
 export type LogoVariantProps = {
   variant?: "dark" | "light";
+  size?: "sm" | "md" | "lg";
 };
 
 export type AddNewButtonProps = {
@@ -91,4 +93,11 @@ export type TextAreaProps = {
   label: string;
   name: string;
   helperText?: string;
+};
+
+export type SectionHeaderProps = {
+  title?: string;
+  icon?: ComponentType<{ className?: string }>;
+  heading: string;
+  description: string;
 };

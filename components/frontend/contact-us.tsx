@@ -1,126 +1,173 @@
 "use client";
 import React, { useState } from "react";
+import TextInput from "@/components/FormInputs/TextInput";
+import { Lock, LogIn, Mail, Send } from "lucide-react";
+import PasswordInput from "@/components/FormInputs/PasswordInput";
+import SubmitButton from "@/components/FormInputs/SubmitButton";
+import { useForm } from "react-hook-form";
+import TextArea from "@/components/FormInputs/TextAreaInput";
+import PhoneInput from "@/components/FormInputs/PhoneInput";
+
+export type RegisterInputProps = {
+  fullName: string;
+  email: string;
+  password: string;
+  phone: string;
+};
 
 const ContactUs: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you would typically send the form data to your backend
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<RegisterInputProps>();
+  async function onSubmit(data: RegisterInputProps) {
+    console.log(data);
+  }
 
   return (
     <section className="bg-gray-100 py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl lg:text-5xl font-bold text-green-900 mb-2">
-          Get In Touch
-        </h2>
-        <p className="text-gray-600 mb-8 pb-4">
-          Streamline your processes and empower your team with our products.
-          Effortlessly manage employee data, and more.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="col-span-1 space-y-4">
-            <div className="bg-green-800 text-white p-6 rounded-2xl">
-              <h3 className="font-semibold text-xl mb-2">
-                Speak to someone in sales
-              </h3>
-              <p className="text-sm mb-4 py-4">
-                To create a more value-added solution, is essential to an
-                analysis of the possibilities of improvement.
-              </p>
-              <button className="bg-white text-green-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition duration-300">
-                Book Appointment
-              </button>
-            </div>
-            <div className="bg-lime-400 p-6 rounded-2xl">
-              <h3 className="font-semibold mb-2 text-xl">
-                Contact to our team
-              </h3>
-              <p className="text-sm mb-4 py-4">
-                To create a more value-added solution, is essential to an
-                analysis of the possibilities of improvement.
-              </p>
-              <button className="bg-green-800 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
-                Send a Mail
-              </button>
-            </div>
-          </div>
-
+        <div className="flex items-center justify-center">
           <div className="col-span-2 bg-white p-6 rounded-2xl shadow">
-            <h3 className="text-xl font-semibold mb-4">
-              Sign up for a Free Trial Today
+            <h3 className="text-2xl text-center font-semibold mb-4">
+              Start Your School’s Digital Transformation
             </h3>
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  className="p-2 border border-gray-300 rounded"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
+            <p className="text-muted-foreground text-sm text-center px-4 py-2 mb-4 max-w-xl mx-auto">
+              Our team will reach out within 24 hours to schedule a personalized
+              demo and discuss your specific needs.
+            </p>
+            <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
+              <TextInput
+                label="Your Full Name"
+                register={register}
+                name="name"
+                type="text"
+                errors={errors}
+                placeholder="Joseph Sesay"
+              />
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <TextInput
+                  label="Email Address"
+                  register={register}
+                  name="email"
+                  type="email"
+                  errors={errors}
+                  placeholder="Eg. josephsesay@gmail.com"
                 />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  className="p-2 border border-gray-300  rounded"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
+
+                <PhoneInput
+                  label="Phone Number"
+                  register={register}
+                  name="phone"
+                  errors={errors}
+                  placeholder="+XXXXXXXX"
                 />
               </div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                className="w-full border-gray-300  p-2 border rounded mb-4"
-                value={formData.email}
-                onChange={handleChange}
-                required
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <TextInput
+                  label="School Name"
+                  register={register}
+                  name="school"
+                  errors={errors}
+                  placeholder="Fake Highscool"
+                />
+
+                <TextInput
+                  label="Country"
+                  register={register}
+                  name="country"
+                  errors={errors}
+                  placeholder="Sierra Leone"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <TextInput
+                  label="School Website/Social Media Page"
+                  register={register}
+                  name="schoolPage"
+                  errors={errors}
+                  placeholder="https://www.fakehighschool.com"
+                />
+
+                <TextInput
+                  label="Number of Students"
+                  register={register}
+                  name="students"
+                  errors={errors}
+                  placeholder="400"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <TextInput
+                  label="Your Role"
+                  register={register}
+                  name="role"
+                  errors={errors}
+                  placeholder="role"
+                />
+
+                <TextInput
+                  label="Product Intrest(Which feature are you looking for?)"
+                  register={register}
+                  name="students"
+                  errors={errors}
+                  placeholder="400"
+                />
+              </div>
+
+              <TextArea
+                label="How can we help?"
+                register={register}
+                name="schoolPage"
+                errors={errors}
               />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                className="w-full border-gray-300  p-2 border rounded mb-4"
-                value={formData.subject}
-                onChange={handleChange}
-                required
+
+              <TextInput
+                label="How did you hear about us?"
+                register={register}
+                name="students"
+                errors={errors}
+                placeholder="400"
               />
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows={4}
-                className="w-full border-gray-300  p-2 border rounded mb-4"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
-              <button
-                type="submit"
-                className="bg-green-800 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-green-700 transition duration-300"
-              >
-                Send Message
-              </button>
+
+              <SubmitButton
+                buttonIcon={Send}
+                title="Signin"
+                loading={isLoading}
+                loadingTitle="Sending please wait..."
+              />
             </form>
+          </div>
+        </div>
+        <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-green-800 text-white p-6 rounded-2xl">
+            <h3 className="font-semibold text-xl mb-2">
+              Speak to someone in sales
+            </h3>
+            <p className="text-sm mb-4 py-4">
+              To create a more value-added solution, is essential to an analysis
+              of the possibilities of improvement.
+            </p>
+            <button className="bg-white text-green-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition duration-300">
+              Book Appointment
+            </button>
+          </div>
+          <div className="bg-lime-400 p-6 rounded-2xl">
+            <h3 className="font-semibold mb-2 text-xl">Contact to our team</h3>
+            <p className="text-sm mb-4 py-4">
+              To create a more value-added solution, is essential to an analysis
+              of the possibilities of improvement.
+            </p>
+            <button className="bg-green-800 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+              Send a Mail
+            </button>
           </div>
         </div>
       </div>
