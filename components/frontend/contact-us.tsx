@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import TextInput from "@/components/FormInputs/TextInput";
-import { Lock, LogIn, Mail, Send } from "lucide-react";
-import PasswordInput from "@/components/FormInputs/PasswordInput";
+import { Send } from "lucide-react";
 import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { useForm } from "react-hook-form";
 import TextArea from "@/components/FormInputs/TextAreaInput";
@@ -13,6 +12,7 @@ export type RegisterInputProps = {
   email: string;
   password: string;
   phone: string;
+  setValue?: string;
 };
 
 const ContactUs: React.FC = () => {
@@ -20,7 +20,7 @@ const ContactUs: React.FC = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    setValue,
     formState: { errors },
   } = useForm<RegisterInputProps>();
   async function onSubmit(data: RegisterInputProps) {
@@ -60,11 +60,13 @@ const ContactUs: React.FC = () => {
                 />
 
                 <PhoneInput
-                  label="Phone Number"
                   register={register}
-                  name="phone"
                   errors={errors}
-                  placeholder="+XXXXXXXX"
+                  label="Phone Number"
+                  name="phone"
+                  toolTipText="Enter your phone number with country code"
+                  placeholder="99998294"
+                  setValue={setValue}
                 />
               </div>
 

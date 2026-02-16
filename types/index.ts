@@ -1,5 +1,7 @@
 import { Option, Options } from "react-tailwindcss-select/dist/components/type";
 import { ComponentType } from "react";
+import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { T } from "tailwindcss/dist/types-CJYAW1ql";
 
 export type SmallTitleProps = {
   title: string;
@@ -101,3 +103,13 @@ export type SectionHeaderProps = {
   heading: string;
   description: string;
 };
+
+export interface PhoneInputProps {
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
+  label: string;
+  name: string;
+  toolTipText?: string;
+  placeholder?: string;
+  setValue: UseFormSetValue<T>;
+}
