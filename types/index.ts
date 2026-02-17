@@ -108,7 +108,7 @@ export interface PhoneInputProps {
   register: UseFormRegister<any>;
   errors: FieldErrors<any>;
   label: string;
-  name: string;
+  name: keyof ContactFormValues;
   toolTipText?: string;
   placeholder?: string;
   setValue: UseFormSetValue<ContactFormValues>;
