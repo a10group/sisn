@@ -113,3 +113,13 @@ export interface PhoneInputProps {
   placeholder?: string;
   setValue: UseFormSetValue<T>;
 }
+
+export interface CountrySelectProps {
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
+  label: string;
+  name: string;
+  toolTipText?: string;
+  placeholder?: string;
+  setValue: UseFormSetValue<T>;
+}

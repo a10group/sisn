@@ -6,6 +6,8 @@ import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { useForm } from "react-hook-form";
 import TextArea from "@/components/FormInputs/TextAreaInput";
 import PhoneInput from "@/components/FormInputs/PhoneInput";
+import CountrySelect from "../FormInputs/CountrySelect";
+import RoleSelect from "@/components/FormInputs/RoleSelect";
 
 export type RegisterInputProps = {
   fullName: string;
@@ -79,12 +81,13 @@ const ContactUs: React.FC = () => {
                   placeholder="Fake Highscool"
                 />
 
-                <TextInput
-                  label="Country"
+                <CountrySelect
                   register={register}
-                  name="country"
                   errors={errors}
-                  placeholder="Sierra Leone"
+                  label="Country"
+                  name="country"
+                  placeholder="Select a country"
+                  setValue={setValue}
                 />
               </div>
 
@@ -107,12 +110,21 @@ const ContactUs: React.FC = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <TextInput
-                  label="Your Role"
+                {/*<TextInput*/}
+                {/*  label="Your Role"*/}
+                {/*  register={register}*/}
+                {/*  name="role"*/}
+                {/*  errors={errors}*/}
+                {/*  placeholder="role"*/}
+                {/*/>*/}
+                <RoleSelect
                   register={register}
-                  name="role"
                   errors={errors}
-                  placeholder="role"
+                  label="Country"
+                  name="country"
+                  toolTipText="Select your country"
+                  placeholder="Select a country"
+                  setValue={setValue}
                 />
 
                 <TextInput
