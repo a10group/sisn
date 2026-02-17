@@ -2,13 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useState, useCallback, useMemo } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { CircleHelp, ChevronDown, Check } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { CountrySelectProps } from "@/types";
 import { countries } from "@/lib/countries";
 
@@ -25,7 +19,6 @@ export default function CountrySelect({
   errors,
   label,
   name,
-  toolTipText,
   placeholder = "Select a country",
   setValue,
 }: CountrySelectProps) {
