@@ -9,12 +9,18 @@ import PhoneInput from "@/components/FormInputs/PhoneInput";
 import CountrySelect from "../FormInputs/CountrySelect";
 import RoleSelect from "@/components/FormInputs/RoleSelect";
 
-export type RegisterInputProps = {
-  fullName: string;
+export type ContactFormValues = {
+  name: string;
   email: string;
-  password: string;
   phone: string;
-  setValue?: string;
+  school: string;
+  country: string;
+  schoolPage: string;
+  students: string;
+  role: string;
+  productInterest: string;
+  message: string;
+  referralSource: string;
 };
 
 const ContactUs: React.FC = () => {
@@ -24,8 +30,8 @@ const ContactUs: React.FC = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<RegisterInputProps>();
-  async function onSubmit(data: RegisterInputProps) {
+  } = useForm<ContactFormValues>();
+  async function onSubmit(data: ContactFormValues) {
     console.log(data);
   }
 
@@ -120,35 +126,35 @@ const ContactUs: React.FC = () => {
                 <RoleSelect
                   register={register}
                   errors={errors}
-                  label="Country"
-                  name="country"
-                  toolTipText="Select your country"
-                  placeholder="Select a country"
+                  label="Your Role"
+                  name="role"
+                  toolTipText="Select your role"
+                  placeholder="Role"
                   setValue={setValue}
                 />
 
                 <TextInput
-                  label="Product Intrest(Which feature are you looking for?)"
+                  label="Product Interest (Which feature are you looking for?)"
                   register={register}
-                  name="students"
+                  name="productInterest"
                   errors={errors}
-                  placeholder="400"
+                  placeholder="Attendance, Finance, LMS..."
                 />
               </div>
 
               <TextArea
                 label="How can we help?"
                 register={register}
-                name="schoolPage"
+                name="message"
                 errors={errors}
               />
 
               <TextInput
                 label="How did you hear about us?"
                 register={register}
-                name="students"
+                name="referralSource"
                 errors={errors}
-                placeholder="400"
+                placeholder="Google, Friend, Social Media..."
               />
 
               <SubmitButton
