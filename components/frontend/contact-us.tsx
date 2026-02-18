@@ -116,20 +116,13 @@ const ContactUs: React.FC = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                {/*<TextInput*/}
-                {/*  label="Your Role"*/}
-                {/*  register={register}*/}
-                {/*  name="role"*/}
-                {/*  errors={errors}*/}
-                {/*  placeholder="role"*/}
-                {/*/>*/}
                 <RoleSelect
                   register={register}
                   errors={errors}
-                  label="Your Role"
+                  label="Select Roles"
                   name="role"
-                  toolTipText="Select your role"
-                  placeholder="Role"
+                  toolTipText="Select one or more roles"
+                  placeholder="Roles"
                   setValue={setValue}
                 />
 

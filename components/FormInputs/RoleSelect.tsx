@@ -1,24 +1,25 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
+import Select from "react-tailwindcss-select";
+import type { SelectValue } from "react-tailwindcss-select/dist/components/type";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { CircleHelp, ChevronDown, Check } from "lucide-react";
-import { CountrySelectProps } from "@/types";
-import { countries } from "@/lib/countries";
+import { CircleHelp } from "lucide-react";
+import { RoleSelectProps } from "@/types";
 
-function getFlagEmoji(countryCode: string) {
-  return countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
-    .join("");
-}
+const roles = [
+  { value: "principal", label: "Principal/Leadership/Mgt" },
+  { value: "school_admin", label: "School Administrator" },
+  { value: "head_teacher", label: "Head Teacher" },
+  { value: "teacher_parent_student", label: "Teacher/Parent/Student" },
+  { value: "consultant_reseller", label: "Consultant/Reseller" },
+  { value: "other", label: "Other" },
+];
 
 export default function RoleSelect({
   register,
@@ -26,31 +27,26 @@ export default function RoleSelect({
   label,
   name,
   toolTipText,
-  placeholder = "Select a country",
+  placeholder = "Roles",
   setValue,
-}: CountrySelectProps) {
-  const [selectedCountry, setSelectedCountry] = useState<
-    (typeof countries)[0] | null
-  >(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+}: RoleSelectProps) {
+  const [selected, setSelected] = React.useState<SelectValue>(null);
 
-  const filteredCountries = useMemo(() => {
-    if (!searchQuery) return countries;
-    const q = searchQuery.toLowerCase();
-    return countries.filter(
-      (c) =>
-        c.title.toLowerCase().includes(q) ||
-        c.countryCode.toLowerCase().includes(q),
-    );
-  }, [searchQuery]);
-
-  const handleCountrySelect = useCallback(
-    (country: (typeof countries)[0]) => {
-      setSelectedCountry(country);
-      setIsOpen(false);
-      setSearchQuery("");
-      setValue(name, country.title);
+  const handleChange = useCallback(
+    (value: SelectValue) => {
+      setSelected(value);
+      if (value === null) {
+        setValue(name, "");
+      } else if (Array.isArray(value)) {
+        const labels = value.map((v) => {
+          const role = roles.find((r) => r.value === v.value);
+          return role?.label ?? v.value;
+        });
+        setValue(name, labels.join(", "));
+      } else {
+        const role = roles.find((r) => r.value === value.value);
+        setValue(name, role?.label ?? value.value);
+      }
     },
     [name, setValue],
   );
@@ -79,113 +75,44 @@ export default function RoleSelect({
           </TooltipProvider>
         )}
       </div>
-      <div className="mt-2 relative">
-        {/* Hidden input for react-hook-form */}
+      <div className="mt-2">
         <input type="hidden" {...register(name, { required: true })} />
 
-        {/* Dropdown trigger */}
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className={cn(
-            "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm shadow-sm ring-1 ring-inset ring-border bg-background transition-colors",
-            "hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary",
-            !selectedCountry && "text-muted-foreground",
-            errors[name] && "ring-destructive",
-          )}
-          aria-expanded={isOpen}
-          aria-haspopup="listbox"
-        >
-          <span className="flex items-center gap-2 truncate">
-            {selectedCountry ? (
-              <>
-                <span
-                  className="text-base leading-none"
-                  role="img"
-                  aria-label={selectedCountry.title}
-                >
-                  {getFlagEmoji(selectedCountry.countryCode)}
-                </span>
-                <span className="text-foreground">{selectedCountry.title}</span>
-              </>
-            ) : (
-              placeholder
-            )}
-          </span>
-          <ChevronDown
-            className={cn(
-              "ml-2 h-4 w-4 shrink-0 text-muted-foreground transition-transform",
-              isOpen && "rotate-180",
-            )}
-          />
-        </button>
+        <Select
+          value={selected}
+          onChange={handleChange}
+          options={roles}
+          isMultiple={true}
+          isSearchable={true}
+          isClearable={true}
+          placeholder={placeholder}
+          searchInputPlaceholder="Search..."
+          primaryColor="blue"
+          classNames={{
+            menuButton: () =>
+              `flex text-sm text-foreground border ${
+                errors[name] ? "border-destructive" : "border-border"
+              } rounded-md shadow-sm transition-all duration-200 focus-within:ring-2 focus-within:ring-primary bg-background`,
+            menu: "absolute z-50 w-full bg-popover border border-border rounded-md shadow-lg mt-1",
+            listItem: (value?: { isSelected?: boolean }) => {
+              const isSelected = value?.isSelected;
 
-        {/* Dropdown panel */}
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <div
-              className="fixed inset-0 z-40"
-              onClick={() => {
-                setIsOpen(false);
-                setSearchQuery("");
-              }}
-            />
-            {/* Panel */}
-            <div className="absolute left-0 right-0 top-full z-50 mt-1 rounded-md border border-border bg-popover shadow-lg">
-              {/* Search input */}
-              <div className="border-b border-border p-2">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search country..."
-                  className="w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-                  autoFocus
-                />
-              </div>
-              {/* Country list */}
-              <ul role="listbox" className="max-h-60 overflow-y-auto py-1">
-                {filteredCountries.length === 0 ? (
-                  <li className="px-3 py-2 text-sm text-muted-foreground">
-                    No countries found
-                  </li>
-                ) : (
-                  filteredCountries.map((country) => {
-                    const isSelected =
-                      selectedCountry?.countryCode === country.countryCode;
-                    return (
-                      <li
-                        key={country.countryCode}
-                        role="option"
-                        aria-selected={isSelected}
-                        onClick={() => handleCountrySelect(country)}
-                        className={cn(
-                          "flex cursor-pointer items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors",
-                          isSelected && "bg-accent",
-                        )}
-                      >
-                        <span
-                          className="text-base leading-none"
-                          role="img"
-                          aria-label={country.title}
-                        >
-                          {getFlagEmoji(country.countryCode)}
-                        </span>
-                        <span className="flex-1 truncate text-foreground">
-                          {country.title}
-                        </span>
-                        {isSelected && (
-                          <Check className="h-4 w-4 text-primary shrink-0" />
-                        )}
-                      </li>
-                    );
-                  })
-                )}
-              </ul>
-            </div>
-          </>
-        )}
+              return `block transition duration-200 px-3 py-2 cursor-pointer text-sm ${
+                isSelected
+                  ? "text-primary-foreground bg-primary"
+                  : "text-foreground hover:bg-accent"
+              }`;
+            },
+            searchBox:
+              "w-full py-2 px-3 text-sm text-foreground bg-background border-b border-border focus:outline-none focus:ring-0",
+            searchIcon: "hidden",
+            tagItem: () =>
+              "flex items-center gap-1 bg-accent text-foreground rounded px-2 py-0.5 text-xs",
+            tagItemIconContainer:
+              "flex items-center cursor-pointer rounded-full hover:bg-muted-foreground/20 p-0.5",
+            tagItemText: "truncate max-w-[150px]",
+          }}
+        />
 
         {errors[name] && (
           <span className="mt-1 block text-xs text-destructive">
