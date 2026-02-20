@@ -6,6 +6,8 @@ import { ChevronDown, Check } from "lucide-react";
 import { ReferalSelectProps } from "@/types";
 import { referalOptions } from "@/lib/referal";
 
+type Option = { value: string; label: string }; // ensure correct typing
+
 export default function ReferalSelect({
   register,
   errors,
@@ -14,12 +16,10 @@ export default function ReferalSelect({
   placeholder = "Select an option",
   setValue,
 }: ReferalSelectProps) {
-  const [selectedOption, setSelectedOption] = useState(
-    referalOptions.find((opt: { value: string }) => opt.value === "") || null,
-  );
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (option: (typeof referalOptions)[0]) => {
+  const handleSelect = (option: Option) => {
     setSelectedOption(option);
     setIsOpen(false);
     setValue(name, option.value);
@@ -57,61 +57,29 @@ export default function ReferalSelect({
       {/* Dropdown menu */}
       {isOpen && (
         <>
-          {/* Backdrop */}
           <div
             className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
           <ul className="absolute left-0 right-0 top-full z-50 mt-1 rounded-md border border-border bg-popover shadow-lg max-h-60 overflow-y-auto">
-            {referalOptions.map(
-              (opt: {
-                value: React.Key | null | undefined;
-                label:
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | React.ReactPortal
-                  | Promise<
-                      | string
-                      | number
-                      | bigint
-                      | boolean
-                      | React.ReactPortal
-                      | React.ReactElement<
-                          unknown,
-                          string | React.JSXElementConstructor<any>
-                        >
-                      | Iterable<React.ReactNode>
-                      | null
-                      | undefined
-                    >
-                  | null
-                  | undefined;
-              }) => {
-                const isSelected = selectedOption?.value === opt.value;
-                return (
-                  <li
-                    key={opt.value}
-                    role="option"
-                    aria-selected={isSelected}
-                    onClick={() => handleSelect(opt)}
-                    className={cn(
-                      "flex cursor-pointer items-center justify-between px-3 py-2 text-sm hover:bg-accent transition-colors",
-                      isSelected && "bg-accent",
-                    )}
-                  >
-                    <span className="truncate">{opt.label}</span>
-                    {isSelected && <Check className="h-4 w-4 text-primary" />}
-                  </li>
-                );
-              },
-            )}
+            {referalOptions.map((opt: Option) => {
+              const isSelected = selectedOption?.value === opt.value;
+              return (
+                <li
+                  key={opt.value}
+                  role="option"
+                  aria-selected={isSelected}
+                  onClick={() => handleSelect(opt)}
+                  className={cn(
+                    "flex cursor-pointer items-center justify-between px-3 py-2 text-sm hover:bg-accent transition-colors",
+                    isSelected && "bg-accent",
+                  )}
+                >
+                  <span className="truncate">{opt.label}</span>
+                  {isSelected && <Check className="h-4 w-4 text-primary" />}
+                </li>
+              );
+            })}
           </ul>
         </>
       )}
