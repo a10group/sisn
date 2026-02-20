@@ -52,7 +52,7 @@ export default function RoleSelect({
   );
 
   return (
-    <div>
+    <div className="max-w-[336px] h-fit">
       <div className="flex gap-2 items-center">
         <label
           htmlFor={name}
@@ -94,15 +94,6 @@ export default function RoleSelect({
                 errors[name] ? "border-destructive" : "border-border"
               } rounded-md shadow-sm transition-all duration-200 focus-within:ring-2 focus-within:ring-primary bg-background`,
             menu: "absolute z-50 w-full bg-popover border border-border rounded-md shadow-lg mt-1",
-            listItem: (value?: { isSelected?: boolean }) => {
-              const isSelected = value?.isSelected;
-
-              return `block transition duration-200 px-3 py-2 cursor-pointer text-sm ${
-                isSelected
-                  ? "text-primary-foreground bg-primary"
-                  : "text-foreground hover:bg-accent"
-              }`;
-            },
             searchBox:
               "w-full py-2 px-3 text-sm text-foreground bg-background border-b border-border focus:outline-none focus:ring-0",
             searchIcon: "hidden",

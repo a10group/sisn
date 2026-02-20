@@ -125,7 +125,6 @@ const ContactUs: React.FC = () => {
                   placeholder="Roles"
                   setValue={setValue}
                 />
-
                 <TextInput
                   label="Product Interest (Which feature are you looking for?)"
                   register={register}

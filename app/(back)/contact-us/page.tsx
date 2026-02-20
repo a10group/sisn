@@ -16,9 +16,9 @@ const Page = () => {
           heading="Transform Your School Operations with SISN"
           description="Modernize your academic, administrative, and financial workflows with an integrated school management platform designed for efficiency and transparency."
         />
-      </div>
 
-      <ContactUs />
+        <ContactUs />
+      </div>
     </div>
   );
 };
