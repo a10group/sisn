@@ -8,6 +8,8 @@ import TextArea from "@/components/FormInputs/TextAreaInput";
 import PhoneInput from "@/components/FormInputs/PhoneInput";
 import CountrySelect from "../FormInputs/CountrySelect";
 import RoleSelect from "@/components/FormInputs/RoleSelect";
+import ReferalSelect from "@/components/FormInputs/ReferalSelect";
+import { referalOptions } from "@/lib/referal";
 
 export type ContactFormValues = {
   name: string;
@@ -125,6 +127,7 @@ const ContactUs: React.FC = () => {
                   placeholder="Roles"
                   setValue={setValue}
                 />
+
                 <TextInput
                   label="Product Interest (Which feature are you looking for?)"
                   register={register}
@@ -141,12 +144,14 @@ const ContactUs: React.FC = () => {
                 errors={errors}
               />
 
-              <TextInput
-                label="How did you hear about us?"
+              <ReferalSelect
                 register={register}
-                name="referralSource"
                 errors={errors}
-                placeholder="Google, Friend, Social Media..."
+                label="How did you hear about us?"
+                name="referralSource"
+                placeholder="Select one..."
+                setValue={setValue}
+                options={[]}
               />
 
               <SubmitButton

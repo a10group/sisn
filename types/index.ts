@@ -133,3 +133,13 @@ export interface RoleSelectProps {
   placeholder?: string;
   setValue: UseFormSetValue<ContactFormValues>;
 }
+
+export type ReferalSelectProps = {
+  label: string;
+  name: keyof ContactFormValues;
+  register: any;
+  errors: any;
+  placeholder?: string;
+  setValue: UseFormSetValue<ContactFormValues>;
+  options: { value: string; label: string }[];
+};

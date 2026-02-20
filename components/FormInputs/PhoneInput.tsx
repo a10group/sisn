@@ -67,7 +67,14 @@ export default function PhoneInput({
 
   const handlePhoneChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value.replace(/[^0-9]/g, "");
+      let value = e.target.value.replace(/[^0-9]/g, "");
+
+      const countryCodeWithoutPlus = selectedCountry.phoneCode.replace("+", "");
+
+      if (value.startsWith(countryCodeWithoutPlus)) {
+        value = value.slice(countryCodeWithoutPlus.length);
+      }
+
       setPhoneNumber(value);
       updateFormValue(selectedCountry, value);
     },
